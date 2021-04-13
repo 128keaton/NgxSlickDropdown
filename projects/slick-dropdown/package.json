@@ -1,6 +1,9 @@
 {
-  "name": "slick-dropdown",
+  "name": "ngx-slick-dropdown",
   "version": "0.0.1",
+  "author": "Keaton Burleson",
+  "repository": "https://github.com/128keaton/NgxSlickDropdown",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^11.1.2",
     "@angular/core": "^11.1.2"

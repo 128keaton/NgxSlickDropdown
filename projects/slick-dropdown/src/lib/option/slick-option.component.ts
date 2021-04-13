@@ -1,13 +1,16 @@
 import {
-  ChangeDetectorRef,
+  AfterViewInit,
   Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
   Input,
   Output,
-  EventEmitter,
-  AfterViewInit,
-  ViewChild, ElementRef
+  ViewChild
 } from '@angular/core';
 import {SlickDropdownSelectedEvent} from '../interfaces';
+import {BehaviorSubject} from 'rxjs';
 
 /**
  * Option IDs need to be unique across components, so this counter exists outside of
@@ -19,17 +22,20 @@ let uniqueIdCounter = 0;
 @Component({
   selector: 'ngx-slick-option',
   templateUrl: './slick-option.component.html',
-  styleUrls: ['./slick-option.component.scss']
+  styleUrls: ['./slick-option.component.scss'],
 })
 export class SlickOptionComponent implements AfterViewInit {
   private _selected = false;
-  private _active = false;
   private _disabled = false;
-  private _labelText: string;
+  private _labelText = '';
 
   // tslint:disable-next-line:no-output-on-prefix
   @Output() readonly onSelectionChange = new EventEmitter<SlickDropdownSelectedEvent>();
   @ViewChild('option') private option: ElementRef;
+  @HostBinding('tabindex') tabIndex = 0;
+  @HostBinding('class') class = '';
+
+  currentlySelected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   /** Whether or not the option is currently selected. */
   get selected(): boolean {
@@ -47,11 +53,12 @@ export class SlickOptionComponent implements AfterViewInit {
   get disabled(): boolean {
     return this._disabled;
   }
-  set disabled(value: any) {
-    if (value === 'true') {
+
+  set disabled(value: boolean) {
+    if (`${value}` === 'true') {
       this._disabled = true;
       return;
-    } else if (value === 'false') {
+    } else if (`${value}` === 'false') {
       this._disabled = false;
       return;
     }
@@ -59,22 +66,23 @@ export class SlickOptionComponent implements AfterViewInit {
     this._disabled = Boolean(value);
   }
 
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {
+  @HostListener('click') onClick(): void {
+   this.select();
   }
+
+  @HostListener('pointerdown') onPointerDown(): void {
+    this.select();
+  }
+
+  constructor() {
+    this.currentlySelected.subscribe(isSelected => {
+      this.class = isSelected ? '' : 'hidden';
+    });
+  }
+
 
   ngAfterViewInit(): void {
     this._labelText = this.option.nativeElement.textContent;
-  }
-
-  /**
-   * Whether or not the option is currently active and ready to be selected.
-   * An active option displays styles as if it is focused, but the
-   * focus is actually retained somewhere else. This comes in handy
-   * for components like autocomplete where focus must remain on the input.
-   */
-  get active(): boolean {
-    return this._active;
   }
 
   get label(): string {
@@ -85,7 +93,6 @@ export class SlickOptionComponent implements AfterViewInit {
   select(): void {
     if (!this._selected) {
       this._selected = true;
-      this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent();
     }
   }
@@ -94,14 +101,13 @@ export class SlickOptionComponent implements AfterViewInit {
   deselect(): void {
     if (this._selected) {
       this._selected = false;
-      this._changeDetectorRef.markForCheck();
+      this.currentlySelected.next(false);
       this._emitSelectionChangeEvent();
     }
   }
 
-
   /** Emits the selection change event. */
   private _emitSelectionChangeEvent(): void {
-    this.onSelectionChange.emit({item: {value: this.value, title: this._labelText}});
+    this.onSelectionChange.emit({item: {value: this.value, title: this._labelText}, selected: this._selected});
   }
 }

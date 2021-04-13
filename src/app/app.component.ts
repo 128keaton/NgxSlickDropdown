@@ -8,6 +8,8 @@ import {SlickDropdownItem} from '../../projects/slick-dropdown/src/lib/interface
 })
 export class AppComponent {
   title = 'NgxSlickDropdown';
+  selectedOne = 'exponential';
+  selectedTwo = null;
   items: SlickDropdownItem[] = [
     {
       title: 'linear fit',

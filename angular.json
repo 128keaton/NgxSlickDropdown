@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "NgxSlickDropdown-demo": {
+    "NgxSlickDropdownDemo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/NgxSlickDropdown",
+            "outputPath": "docs/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "NgxSlickDropdown:build"
+            "browserTarget": "NgxSlickDropdownDemo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "NgxSlickDropdown:build:production"
+              "browserTarget": "NgxSlickDropdownDemo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "NgxSlickDropdown:build"
+            "browserTarget": "NgxSlickDropdownDemo:build"
           }
         },
         "test": {
@@ -119,11 +119,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "NgxSlickDropdown:serve"
+            "devServerTarget": "NgxSlickDropdownDemo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "NgxSlickDropdown:serve:production"
+              "devServerTarget": "NgxSlickDropdownDemo:serve:production"
             }
           }
         }
@@ -133,7 +133,7 @@
       "projectType": "library",
       "root": "projects/slick-dropdown",
       "sourceRoot": "projects/slick-dropdown/src",
-      "prefix": "lib",
+      "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -170,5 +170,5 @@
       }
     }
   },
-  "defaultProject": "NgxSlickDropdown-demo"
+  "defaultProject": "NgxSlickDropdownDemo"
 }

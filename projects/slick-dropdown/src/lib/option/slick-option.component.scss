@@ -1,13 +1,29 @@
-p.slick-option-text {
-  height: calc(1.4rem + 1rem);
+:host {
+  * {
+    margin: 0 0;
+    padding: 0 0;
+    box-sizing: border-box;
+    text-align: center;
+    outline: none;
+  }
+
   padding: 0.7rem 0;
   line-height: 1;
   transform: scale(1);
   opacity: 1;
   transition: opacity 0.132s, transform 0.132s, height 0.22s, padding 0.22s;
+  display: block;
+  outline: none!important;
 
   &:hover,
   &:focus {
     transform: scale(1.2);
+  }
+
+  &.hidden {
+    height: 0;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
   }
 }

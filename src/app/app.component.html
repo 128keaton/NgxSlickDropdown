@@ -1,3 +1,19 @@
-<ngx-slick-dropdown>
-  <ngx-slick-option *ngFor="let item of items" [value]="item.value">{{item.title}}</ngx-slick-option>
-</ngx-slick-dropdown>
+<h4>{{title}}</h4>
+<div class="demo">
+  <h1>Selected:</h1>
+  <h2>{{selectedOne}}</h2>
+  <ngx-slick-dropdown [(ngModel)]="selectedOne">
+    <ngx-slick-option *ngFor="let item of items" [value]="item.value">{{item.title}}</ngx-slick-option>
+  </ngx-slick-dropdown>
+</div>
+
+<div class="toggle-demo">
+  <h1>Selected:</h1>
+  <h2>{{selectedTwo || 'None'}}</h2>
+  <ngx-slick-dropdown #dropdownTwo placeholder="Custom placeholder" [(ngModel)]="selectedTwo">
+    <ngx-slick-option *ngFor="let item of items" [value]="item.value">{{item.title}}</ngx-slick-option>
+  </ngx-slick-dropdown>
+  <a (click)="dropdownTwo.clear()">Clear</a>
+
+</div>
+<p>Inspired by <a href="https://codepen.io/oscarsaharoy/pen/JjEbReo">actually usable dropdown</a> by Oscar Saharoy</p>

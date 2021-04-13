@@ -1,5 +1,6 @@
-<div class="slick-dropdown">
-  <div class="inner" tabindex="0">
+<div #outerDiv class="slick-dropdown">
+  <div #innerDiv class="inner" tabindex="0">
     <ng-content></ng-content>
+    <span class="placeholder" *ngIf="showPlaceholder|async">{{placeholder}}</span>
   </div>
 </div>

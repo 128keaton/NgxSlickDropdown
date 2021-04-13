@@ -1,4 +1,14 @@
-.dropdown {
+:host {
+  * {
+    margin: 0 0;
+    padding: 0 0;
+    box-sizing: border-box;
+    text-align: center;
+    outline: none;
+  }
+}
+
+.slick-dropdown {
   text-align: center;
   width: 17rem;
   height: calc(6px + 1.6rem + 1rem + 1.4rem);
@@ -7,6 +17,7 @@
   cursor: pointer;
   position: relative;
   -webkit-tap-highlight-color: transparent;
+  outline: none!important;
 
   .inner {
     width: 100%;
@@ -19,6 +30,8 @@
     position: absolute;
     background: #F9FDFD;
     z-index: 1;
+    outline: none!important;
+    min-height: 100%;
 
     &:focus-within,
     &:focus,
@@ -32,5 +45,13 @@
     padding: 0;
     opacity: 0;
     pointer-events: none;
+  }
+
+  span.placeholder {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1.5em;
+    color: gray;
   }
 }
