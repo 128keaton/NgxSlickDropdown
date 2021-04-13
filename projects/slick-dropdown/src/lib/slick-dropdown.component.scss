@@ -1,0 +1,36 @@
+.dropdown {
+  text-align: center;
+  width: 17rem;
+  height: calc(6px + 1.6rem + 1rem + 1.4rem);
+  background: transparent;
+  align-content: center;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+
+  .inner {
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1;
+    border: 3px solid #8decd3;
+    border-radius: 1rem;
+    align-content: center;
+    padding: 0.8rem 1.32rem;
+    position: absolute;
+    background: #F9FDFD;
+    z-index: 1;
+
+    &:focus-within,
+    &:focus,
+    &:hover {
+      box-shadow: 0 0 0 2px #44EBF8;
+    }
+  }
+
+  .hidden {
+    height: 0;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

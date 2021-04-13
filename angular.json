@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "NgxSlickDropdown": {
+    "NgxSlickDropdown-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -125,7 +128,47 @@
           }
         }
       }
+    },
+    "NgxSlickDropdown": {
+      "projectType": "library",
+      "root": "projects/slick-dropdown",
+      "sourceRoot": "projects/slick-dropdown/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/slick-dropdown/tsconfig.lib.json",
+            "project": "projects/slick-dropdown/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/slick-dropdown/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/slick-dropdown/src/test.ts",
+            "tsConfig": "projects/slick-dropdown/tsconfig.spec.json",
+            "karmaConfig": "projects/slick-dropdown/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/slick-dropdown/tsconfig.lib.json",
+              "projects/slick-dropdown/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "NgxSlickDropdown"
+  "defaultProject": "NgxSlickDropdown-demo"
 }
