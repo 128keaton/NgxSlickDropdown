@@ -1,7 +1,9 @@
 # NgxSlickDropdown
 
 
-![](https://user-images.githubusercontent.com/1402918/114612073-46e66180-9c67-11eb-8a53-d25f4ff9c20f.mp4)
+![demo-ngx-slick-dropdown](https://user-images.githubusercontent.com/1402918/114613383-df311600-9c68-11eb-86f1-5ada3c907015.gif)
+
+
 
 An Angular dropdown component inspired by [actually usable dropdown](https://codepen.io/oscarsaharoy/pen/JjEbReo).
 
