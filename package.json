@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve --port 12345",
     "build:lib": "cp ./README.md ./projects/slick-dropdown/ && ng build NgxSlickDropdown --prod",
-    "build:docs": "ng build --prod",
+    "build:docs": "ng build --prod  --base-href=/NgxSlickDropdown/ --deploy-url=/NgxSlickDropdown/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
