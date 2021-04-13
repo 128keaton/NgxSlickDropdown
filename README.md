@@ -1,5 +1,5 @@
 # NgxSlickDropdown
-
+[View Demo](https://128keaton.github.io/NgxSlickDropdown/)
 
 ![demo-ngx-slick-dropdown](https://user-images.githubusercontent.com/1402918/114613383-df311600-9c68-11eb-86f1-5ada3c907015.gif)
 
